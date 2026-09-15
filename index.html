@@ -3,63 +3,574 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Anniversary 💗</title>
+
+    <title>Our Little World 💗</title>
+
+    <!-- Cute Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            height: 100vh;
+            background: #fff4f7;
+            color: #5c4350;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 20px;
+            animation: float 7s linear infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(3) {
+            left: 55%;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(4) {
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(25deg);
+            }
+        }
+
+        /* General sections */
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: #fff0f5;
-            font-family: Arial, sans-serif;
         }
 
-        .container {
-            background: white;
-            padding: 50px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        h1,
+        h2 {
+            font-family: "Dancing Script", cursive;
         }
 
         h1 {
-            font-family: "Brush Script MT", cursive;
-            font-size: 60px;
-            color: #d45a7a;
-            margin-bottom: 10px;
+            font-size: clamp(48px, 10vw, 85px);
+            margin: 0 0 15px;
+            color: #d85c83;
+        }
+
+        h2 {
+            font-size: clamp(40px, 8vw, 65px);
+            margin: 0 0 20px;
+            color: #d85c83;
         }
 
         p {
-            font-size: 20px;
-            color: #777;
+            line-height: 1.8;
+            max-width: 650px;
         }
 
-        button {
-            margin-top: 25px;
-            padding: 14px 30px;
-            border: none;
-            border-radius: 30px;
-            background: #d45a7a;
-            color: white;
+        /* Opening */
+        #opening {
+            background: linear-gradient(135deg, #fff1f5, #ffe4ec);
+        }
+
+        .opening-card {
+            max-width: 850px;
+            padding: 50px 30px;
+        }
+
+        .opening-card .small {
             font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            border: none;
+            padding: 15px 32px;
+            border-radius: 50px;
+            background: #d85c83;
+            color: white;
+            font-size: 17px;
+            font-family: "Poppins", sans-serif;
             cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(216, 92, 131, 0.25);
+        }
+
+        .button:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        /* Love letter */
+        #letter {
+            background: #fffafc;
+        }
+
+        .letter-box {
+            max-width: 700px;
+            padding: 45px 35px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(100, 60, 80, 0.12);
+        }
+
+        .letter-box p {
+            font-size: 17px;
+        }
+
+        .signature {
+            font-family: "Dancing Script", cursive;
+            font-size: 32px;
+            color: #d85c83;
+        }
+
+        /* Story */
+        #story {
+            background: #fff0f5;
+        }
+
+        .timeline {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .memory {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(100, 60, 80, 0.08);
+        }
+
+        .memory span {
+            font-size: 30px;
+        }
+
+        .memory h3 {
+            color: #d85c83;
+            margin-bottom: 5px;
+        }
+
+        /* Photos */
+        #memories {
+            background: #fffafc;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .photo {
+            height: 220px;
+            border-radius: 25px;
+            background: #ffe3eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            box-shadow: 0 8px 20px rgba(100, 60, 80, 0.08);
+        }
+
+        /* Questions */
+        #questions {
+            background: linear-gradient(135deg, #ffe8ef, #fff4f7);
+        }
+
+        .question-box {
+            max-width: 650px;
+            width: 100%;
+            padding: 45px 30px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(100, 60, 80, 0.12);
+        }
+
+        .question {
+            font-family: "Dancing Script", cursive;
+            font-size: 38px;
+            color: #d85c83;
+            margin-bottom: 30px;
+        }
+
+        .answers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .yes {
+            background: #d85c83;
+        }
+
+        .no {
+            background: #b88999;
+        }
+
+        #noMessage {
+            display: none;
+            margin-top: 25px;
+            padding: 18px;
+            border-radius: 20px;
+            background: #fff0f5;
+        }
+
+        /* Final */
+        #final {
+            background: linear-gradient(135deg, #ffe1eb, #fff4f7);
+        }
+
+        .final-heart {
+            font-size: 70px;
+            animation: beat 1.2s infinite;
+        }
+
+        @keyframes beat {
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .final-text {
+            font-family: "Dancing Script", cursive;
+            font-size: 35px;
+            color: #d85c83;
+        }
+
+        /* Mobile */
+        @media (max-width: 650px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo {
+                height: 180px;
+            }
+
+            .letter-box,
+            .question-box {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>♡ Happy Anniversary ♡</h1>
-        <p>To my favorite person... 💗</p>
-        <button onclick="openLetter()">Open it 🎀</button>
-    </div>
-<script>
-    function openLetter() {
-        alert("A little something made just for you 💗");
-    }
-</script>
+    <!-- Floating hearts -->
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+
+
+    <!-- ================= OPENING ================= -->
+
+    <section id="opening">
+
+        <div class="opening-card">
+
+            <p class="small">A LITTLE SOMETHING FOR YOU ✨</p>
+
+            <h1>♡ Happy Anniversary ♡</h1>
+
+            <p class="subtitle">
+                Welcome to our little corner of the internet. 💗
+            </p>
+
+            <button class="button" onclick="goToLetter()">
+                Open it 🎀
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LOVE LETTER ================= -->
+
+    <section id="letter">
+
+        <div class="letter-box">
+
+            <h2>For You 💌</h2>
+
+            <p>
+                My favorite person,
+            </p>
+
+            <p>
+                This little website was made especially for you.
+                Every section has a tiny piece of our story,
+                a little bit of fun, and a whole lot of love. 💗
+            </p>
+
+            <p>
+                There's still a lot more waiting for you,
+                so keep going. 👀🎀
+            </p>
+
+            <p class="signature">
+                With love ♡
+            </p>
+
+            <button class="button" onclick="goToStory()">
+                Keep going 🌷
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= OUR STORY ================= -->
+
+    <section id="story">
+
+        <h2>Our Little Story 🫶</h2>
+
+        <p>
+            A few little moments that make our story ours. 💗
+        </p>
+
+        <div class="timeline">
+
+            <div class="memory">
+                <span>🌱</span>
+                <h3>The Beginning</h3>
+                <p>
+                    Where our little story started...
+                </p>
+            </div>
+
+            <div class="memory">
+                <span>💬</span>
+                <h3>The Conversations</h3>
+                <p>
+                    All those talks, jokes and random moments.
+                </p>
+            </div>
+
+            <div class="memory">
+                <span>🫶</span>
+                <h3>Us</h3>
+                <p>
+                    And somehow, here we are. ❤️
+                </p>
+            </div>
+
+        </div>
+
+        <button class="button" onclick="goToMemories()">
+            More memories 📸
+        </button>
+
+    </section>
+
+
+    <!-- ================= MEMORIES ================= -->
+
+    <section id="memories">
+
+        <h2>Our Memories 📸</h2>
+
+        <p>
+            Some empty spaces waiting for our favorite pictures. 💗
+        </p>
+
+        <div class="photo-grid">
+
+            <div class="photo">📷</div>
+            <div class="photo">💗</div>
+            <div class="photo">🌷</div>
+            <div class="photo">✨</div>
+            <div class="photo">🫶</div>
+            <div class="photo">🎀</div>
+
+        </div>
+
+        <br>
+
+        <button class="button" onclick="goToQuestions()">
+            One more thing... 👀
+        </button>
+
+    </section>
+
+
+    <!-- ================= QUESTIONS ================= -->
+
+    <section id="questions">
+
+        <div class="question-box">
+
+            <h2>Okay... Questions 👀</h2>
+
+            <div id="questionText" class="question">
+                Do you love me? 💗
+            </div>
+
+            <div class="answers">
+
+                <button class="button yes" onclick="yesAnswer()">
+                    YES 💗
+                </button>
+
+                <button class="button no" onclick="noAnswer()">
+                    NO 😌
+                </button>
+
+            </div>
+
+            <div id="noMessage">
+                <p id="messageText">
+                    Hmm... interesting answer. 🤨
+                </p>
+
+                <button class="button" onclick="tryAgain()">
+                    Okay, try again 😭
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FINAL ================= -->
+
+    <section id="final">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h2>And that's not all...</h2>
+
+        <p class="final-text">
+            Happy Anniversary, my favorite person. 💗
+        </p>
+
+        <p>
+            Here's to us, our memories, our chaos,
+            our laughs and everything still waiting for us. 🫶✨
+        </p>
+
+        <p>
+            I love you. ❤️
+        </p>
+
+    </section>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function goToLetter() {
+            document.getElementById("letter").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+
+        function goToStory() {
+            document.getElementById("story").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+
+        function goToMemories() {
+            document.getElementById("memories").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+
+        function goToQuestions() {
+            document.getElementById("questions").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+
+        function yesAnswer() {
+
+            document.getElementById("noMessage").style.display = "none";
+
+            document.getElementById("questionText").innerHTML =
+                "I KNEW IT 😭💗";
+
+            setTimeout(function() {
+
+                document.getElementById("final").scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }, 1200);
+        }
+
+
+        function noAnswer() {
+
+            document.getElementById("messageText").innerHTML =
+                "EXCUSE ME?! 😭 You might want to reconsider that answer. 💀💗";
+
+            document.getElementById("noMessage").style.display = "block";
+        }
+
+
+        function tryAgain() {
+
+            document.getElementById("noMessage").style.display = "none";
+
+            document.getElementById("questionText").innerHTML =
+                "Do you love me? 💗";
+
+        }
+
+    </script>
+
 </body>
 </html>
