@@ -6,7 +6,6 @@
 
     <title>Our Little World 💗</title>
 
-    <!-- Cute Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -25,9 +24,49 @@
             background: #fff4f7;
             color: #5c4350;
             font-family: "Poppins", sans-serif;
+            overflow: hidden;
+        }
+
+        section {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        section.active {
+            display: flex;
+        }
+
+        h1,
+        h2 {
+            font-family: "Dancing Script", cursive;
+        }
+
+        h1 {
+            font-size: clamp(48px, 10vw, 85px);
+            margin: 0 0 15px;
+            color: #d85c83;
+        }
+
+        h2 {
+            font-size: clamp(40px, 8vw, 65px);
+            margin: 0 0 20px;
+            color: #d85c83;
+        }
+
+        p {
+            line-height: 1.8;
+            max-width: 650px;
         }
 
         /* Floating hearts */
+
         .heart {
             position: fixed;
             bottom: -30px;
@@ -35,6 +74,7 @@
             animation: float 7s linear infinite;
             opacity: 0.6;
             pointer-events: none;
+            z-index: 10;
         }
 
         .heart:nth-child(1) {
@@ -67,40 +107,27 @@
             }
         }
 
-        /* General sections */
-        section {
-            min-height: 100vh;
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        /* Buttons */
+
+        .button {
+            border: none;
+            padding: 15px 32px;
+            border-radius: 50px;
+            background: #d85c83;
+            color: white;
+            font-size: 17px;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(216, 92, 131, 0.25);
         }
 
-        h1,
-        h2 {
-            font-family: "Dancing Script", cursive;
-        }
-
-        h1 {
-            font-size: clamp(48px, 10vw, 85px);
-            margin: 0 0 15px;
-            color: #d85c83;
-        }
-
-        h2 {
-            font-size: clamp(40px, 8vw, 65px);
-            margin: 0 0 20px;
-            color: #d85c83;
-        }
-
-        p {
-            line-height: 1.8;
-            max-width: 650px;
+        .button:hover {
+            transform: translateY(-4px) scale(1.03);
         }
 
         /* Opening */
+
         #opening {
             background: linear-gradient(135deg, #fff1f5, #ffe4ec);
         }
@@ -120,24 +147,8 @@
             margin-bottom: 30px;
         }
 
-        .button {
-            border: none;
-            padding: 15px 32px;
-            border-radius: 50px;
-            background: #d85c83;
-            color: white;
-            font-size: 17px;
-            font-family: "Poppins", sans-serif;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(216, 92, 131, 0.25);
-        }
+        /* Letter */
 
-        .button:hover {
-            transform: translateY(-4px) scale(1.03);
-        }
-
-        /* Love letter */
         #letter {
             background: #fffafc;
         }
@@ -161,6 +172,7 @@
         }
 
         /* Story */
+
         #story {
             background: #fff0f5;
         }
@@ -172,8 +184,8 @@
 
         .memory {
             background: white;
-            margin: 20px 0;
-            padding: 25px;
+            margin: 15px 0;
+            padding: 20px;
             border-radius: 25px;
             box-shadow: 0 8px 25px rgba(100, 60, 80, 0.08);
         }
@@ -187,7 +199,8 @@
             margin-bottom: 5px;
         }
 
-        /* Photos */
+        /* Memories */
+
         #memories {
             background: #fffafc;
         }
@@ -201,7 +214,7 @@
         }
 
         .photo {
-            height: 220px;
+            height: 180px;
             border-radius: 25px;
             background: #ffe3eb;
             display: flex;
@@ -212,6 +225,7 @@
         }
 
         /* Questions */
+
         #questions {
             background: linear-gradient(135deg, #ffe8ef, #fff4f7);
         }
@@ -255,7 +269,12 @@
             background: #fff0f5;
         }
 
+        #noMessage p {
+            margin: 0 auto 15px;
+        }
+
         /* Final */
+
         #final {
             background: linear-gradient(135deg, #ffe1eb, #fff4f7);
         }
@@ -278,18 +297,24 @@
         }
 
         /* Mobile */
+
         @media (max-width: 650px) {
+
             .photo-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
 
             .photo {
-                height: 180px;
+                height: 140px;
             }
 
             .letter-box,
             .question-box {
                 padding: 30px 20px;
+            }
+
+            .question {
+                font-size: 32px;
             }
         }
     </style>
@@ -298,15 +323,16 @@
 <body>
 
     <!-- Floating hearts -->
+
     <div class="heart">♡</div>
     <div class="heart">♥</div>
     <div class="heart">♡</div>
     <div class="heart">♥</div>
 
 
-    <!-- ================= OPENING ================= -->
+    <!-- OPENING -->
 
-    <section id="opening">
+    <section id="opening" class="active">
 
         <div class="opening-card">
 
@@ -318,7 +344,7 @@
                 Welcome to our little corner of the internet. 💗
             </p>
 
-            <button class="button" onclick="goToLetter()">
+            <button class="button" onclick="showSection('letter')">
                 Open it 🎀
             </button>
 
@@ -327,7 +353,7 @@
     </section>
 
 
-    <!-- ================= LOVE LETTER ================= -->
+    <!-- LOVE LETTER -->
 
     <section id="letter">
 
@@ -354,7 +380,7 @@
                 With love ♡
             </p>
 
-            <button class="button" onclick="goToStory()">
+            <button class="button" onclick="showSection('story')">
                 Keep going 🌷
             </button>
 
@@ -363,7 +389,7 @@
     </section>
 
 
-    <!-- ================= OUR STORY ================= -->
+    <!-- OUR STORY -->
 
     <section id="story">
 
@@ -401,14 +427,14 @@
 
         </div>
 
-        <button class="button" onclick="goToMemories()">
+        <button class="button" onclick="showSection('memories')">
             More memories 📸
         </button>
 
     </section>
 
 
-    <!-- ================= MEMORIES ================= -->
+    <!-- MEMORIES -->
 
     <section id="memories">
 
@@ -431,14 +457,14 @@
 
         <br>
 
-        <button class="button" onclick="goToQuestions()">
+        <button class="button" onclick="showSection('questions')">
             One more thing... 👀
         </button>
 
     </section>
 
 
-    <!-- ================= QUESTIONS ================= -->
+    <!-- QUESTIONS -->
 
     <section id="questions">
 
@@ -447,7 +473,7 @@
             <h2>Okay... Questions 👀</h2>
 
             <div id="questionText" class="question">
-                Do you love me? 💗
+                Will you keep me happy? 💗
             </div>
 
             <div class="answers">
@@ -463,13 +489,15 @@
             </div>
 
             <div id="noMessage">
+
                 <p id="messageText">
-                    Hmm... interesting answer. 🤨
+                    ACHAAA??? 🤨
                 </p>
 
                 <button class="button" onclick="tryAgain()">
                     Okay, try again 😭
                 </button>
+
             </div>
 
         </div>
@@ -477,7 +505,7 @@
     </section>
 
 
-    <!-- ================= FINAL ================= -->
+    <!-- FINAL -->
 
     <section id="final">
 
@@ -503,70 +531,90 @@
     </section>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
-        function goToLetter() {
-            document.getElementById("letter").scrollIntoView({
-                behavior: "smooth"
+        let currentQuestion = 1;
+
+
+        /* Change sections */
+
+        function showSection(sectionId) {
+
+            document.querySelectorAll("section").forEach(function(section) {
+                section.classList.remove("active");
             });
+
+            document.getElementById(sectionId).classList.add("active");
+
+            window.scrollTo(0, 0);
         }
 
 
-        function goToStory() {
-            document.getElementById("story").scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-
-
-        function goToMemories() {
-            document.getElementById("memories").scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-
-
-        function goToQuestions() {
-            document.getElementById("questions").scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-
+        /* YES button */
 
         function yesAnswer() {
 
             document.getElementById("noMessage").style.display = "none";
 
-            document.getElementById("questionText").innerHTML =
-                "I KNEW IT 😭💗";
+            if (currentQuestion === 1) {
 
-            setTimeout(function() {
+                document.getElementById("questionText").innerHTML =
+                    "As you should 💅";
 
-                document.getElementById("final").scrollIntoView({
-                    behavior: "smooth"
-                });
+                setTimeout(function() {
 
-            }, 1200);
+                    currentQuestion = 2;
+
+                    document.getElementById("questionText").innerHTML =
+                        "Are you happy with me? 💗";
+
+                }, 1500);
+
+            }
+
+            else if (currentQuestion === 2) {
+
+                document.getElementById("questionText").innerHTML =
+                    "Pta hi tha 💅";
+
+                setTimeout(function() {
+
+                    showSection("final");
+
+                }, 1500);
+            }
         }
 
 
+        /* NO button */
+
         function noAnswer() {
 
-            document.getElementById("messageText").innerHTML =
-                "EXCUSE ME?! 😭 You might want to reconsider that answer. 💀💗";
+            if (currentQuestion === 1) {
+
+                document.getElementById("messageText").innerHTML =
+                    "ACHAAA??? 🤨";
+
+            }
+
+            else if (currentQuestion === 2) {
+
+                document.getElementById("messageText").innerHTML =
+                    "Dubara kehna zra 😇";
+
+            }
 
             document.getElementById("noMessage").style.display = "block";
         }
 
 
+        /* Try again */
+
         function tryAgain() {
 
             document.getElementById("noMessage").style.display = "none";
-
-            document.getElementById("questionText").innerHTML =
-                "Do you love me? 💗";
 
         }
 
