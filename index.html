@@ -65,8 +65,6 @@
             max-width: 650px;
         }
 
-        /* Floating hearts */
-
         .heart {
             position: fixed;
             bottom: -30px;
@@ -107,8 +105,6 @@
             }
         }
 
-        /* Buttons */
-
         .button {
             border: none;
             padding: 15px 32px;
@@ -125,8 +121,6 @@
         .button:hover {
             transform: translateY(-4px) scale(1.03);
         }
-
-        /* Opening */
 
         #opening {
             background: linear-gradient(135deg, #fff1f5, #ffe4ec);
@@ -146,8 +140,6 @@
             font-size: 20px;
             margin-bottom: 30px;
         }
-
-        /* Letter */
 
         #letter {
             background: #fffafc;
@@ -171,10 +163,9 @@
             color: #d85c83;
         }
 
-        /* Story */
-
         #story {
             background: #fff0f5;
+            justify-content: flex-start;
         }
 
         .timeline {
@@ -199,8 +190,6 @@
             margin-bottom: 5px;
         }
 
-        /* Memories */
-
         #memories {
             background: #fffafc;
         }
@@ -223,8 +212,6 @@
             font-size: 45px;
             box-shadow: 0 8px 20px rgba(100, 60, 80, 0.08);
         }
-
-        /* Questions */
 
         #questions {
             background: linear-gradient(135deg, #ffe8ef, #fff4f7);
@@ -273,8 +260,6 @@
             margin: 0 auto 15px;
         }
 
-        /* Final */
-
         #final {
             background: linear-gradient(135deg, #ffe1eb, #fff4f7);
         }
@@ -296,10 +281,7 @@
             color: #d85c83;
         }
 
-        /* Mobile */
-
         @media (max-width: 650px) {
-
             .photo-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -403,29 +385,42 @@
         <div class="timeline">
 
             <div class="memory">
+
                 <span>🌱</span>
+
                 <h3>The Beginning</h3>
+
                 <p>
                     When you first texted me, Apka bahana ye tha k games khelni hoti is liye dm aye.
                     pta to tb hi tha k niyat khrab bandy ki pr mene socha chlo chance dy dete hain.
                     Wo alg bat k kbhi kbhi jan bujh k indirectly apko cherti thi q k pta tha reaction do gy,
                     hehehehehe...💅
                 </p>
+
             </div>
 
+
             <div class="memory">
+
                 <span>💬</span>
+
                 <h3>The Conversations</h3>
+
                 <p>
                     Hamari sb convorsations my sy ig meri first conversation wo thi jb ap ny random 
                     ramdom cheezon py bat krny wala concept shuru kiya. I still remember apny pehli bar jb kaha tha,
                     "Kam khtum kr k ain phr koi story sunain" or story k bagair ap soty nhi thy😭😭
                 </p>
+
             </div>
 
+
             <div class="memory">
+
                 <span>❤️</span>
+
                 <h3>Reminder</h3>
+
                 <p>
                    I WILL ALWAAYYYSSS LOVE YOU AND BE THERE FOR YOU, NO MATTER WHAT❤️
                 I added this part because of what's happening recently, my is wkt ap py waisy bharosa nhi krti
@@ -435,6 +430,7 @@
                 ye feel ho. but agr hua, just kow that i'm there for you pysically or not, i will ALWAYS pray for you
                 when i pray for myself.❤️❤️❤️
                 </p>
+
             </div>
 
         </div>
@@ -559,6 +555,8 @@
 
             document.getElementById(sectionId).classList.add("active");
 
+            document.getElementById(sectionId).scrollTop = 0;
+
             window.scrollTo(0, 0);
         }
 
@@ -592,10 +590,28 @@
 
                 setTimeout(function() {
 
+                    currentQuestion = 3;
+
+                    document.getElementById("questionText").innerHTML =
+                        "Will you be mine forever? 💗";
+
+                }, 1500);
+
+            }
+
+            else if (currentQuestion === 3) {
+
+                document.getElementById("questionText").innerHTML =
+                    "Good for you 💅";
+
+                setTimeout(function() {
+
                     showSection("final");
 
                 }, 1500);
+
             }
+
         }
 
 
@@ -617,7 +633,15 @@
 
             }
 
+            else if (currentQuestion === 3) {
+
+                document.getElementById("messageText").innerHTML =
+                    "??? hehe 😁";
+
+            }
+
             document.getElementById("noMessage").style.display = "block";
+
         }
 
 
